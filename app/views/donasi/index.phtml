@@ -1,0 +1,113 @@
+<section id="halamandonasi" class="wrapper more bg-img">
+	<div class="inner">
+		<article class="box">
+			<header>
+				<h2>Form Donasi</h2>
+			</header>
+			<div class="content">
+                <form action="#" method="post">
+                    <div class="field half first">
+                        <label for="name">Name</label>
+                        <input name="name" id="name" type="text" placeholder="Nama Lengkap Pendonasi" required>
+                    </div>
+                    <div class="field half">
+                        <label for="phone">No HP</label>
+                        <input name="phone" id="phone" type="text" placeholder="Nomor Telpon">
+                    </div>
+                    <div class="field">
+                        <!-- <label for="dropdown">Kategori Donasi</label> -->
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Kategori Donasi
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <!-- <button data-id="0" class="btn btn-danger perubahanAP" data-adder='-5' >-5</button>  -->
+                                <a class="dropdown-item tipedonasi" href="#" data-type=1>Uang Tunai</a>
+                                <a class="dropdown-item tipedonasi" href="#" data-type=2>Bahan Makanan</a>
+                                <a class="dropdown-item tipedonasi" href="#" data-type=3>Obat</a>
+                            </div>
+                        </div>
+
+                        <div id="newlink">
+                            <br>
+                    </div>
+                    <ul class="actions">
+                        <li><input value="Donasikan" class="button alt" type="submit"></li>
+                    </ul>
+                </form>
+			</div>
+			<footer>
+				<!-- <a href="/donasi" class="button alt">Mulai Donasi</a> -->
+			</footer>
+		</article>
+	</div>
+</section>
+
+
+<!-- template element 1-->
+<div id="newlinktp1" style="display:none">
+    <div class="field half first">
+        <label class="control-label" for="pwd">Donasi Uang Tunai</label>
+        <input name="nominal" id="nominal" type="text" placeholder="Nominal uang tunai yang didonasikan" required>
+    </div>
+</div>
+<!-- end template-->
+
+<!-- template element 2-->
+<div id="newlinktp2" style="display:none">
+    <div class="field half first">
+        <label class="control-label" for="pwd">Donasi Makanan</label>
+        <input name="namamakanan" id="namamakanan" type="text" placeholder="Makanan yang didonasikan" required>
+        <input name="jumlahmakanan" id="jumlahmakanan" type="text" placeholder="Jumlah makanan yang didonasikan" required>
+    </div>
+</div>
+<!-- end template-->
+
+<!-- template element 3-->
+<div id="newlinktp3" style="display:none">
+    <div class="field half first">
+        <label class="control-label" for="pwd">Donasi Obat</label>
+        <input name="namaobat" id="namaobat" type="text" placeholder="Obat yang didonasikan" required>
+        <input name="jumlahobat" id="jumlahobat" type="text" placeholder="Jumlah obat yang didonasikan" required>
+    </div>
+</div>
+<!-- end template-->
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+
+var ct=1;
+// function add_frm(){
+$(document).on("click", ".tipedonasi", function () {
+    ct++;
+    var idnya = $(this).data('type');
+    console.log(idnya);
+    if(ct<=20){
+        var div1=document.createElement('div');
+        var div2=document.createElement('div');
+
+        div1.id=ct;
+        var del='<div class="form-group"><div ><button type="reset" onclick="del_frm('+ct+')" class="btn btn-danger field-half first">Hapus</button></div></div>';
+        var br='<br>';
+        if(idnya == 1) {
+            div1.innerHTML=document.getElementById('newlinktp1').innerHTML+del+br;
+        }
+        else if(idnya == 2) {
+            div1.innerHTML=document.getElementById('newlinktp2').innerHTML+del+br;
+        }
+        else{
+            div1.innerHTML=document.getElementById('newlinktp3').innerHTML+del+br;
+        }
+        document.getElementById('newlink').appendChild(div1);
+    }
+});
+
+function del_frm(id){
+    var ide=document.getElementById(id);
+    var parent=document.getElementById('newlink');
+    parent.removeChild(ide);
+}
+
+
+</script>
